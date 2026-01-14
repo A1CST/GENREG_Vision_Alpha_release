@@ -2,7 +2,7 @@
 
 This repository contains evaluation scripts and the best checkpoint from a GENREG (Genetic Neural Regulation) vision-language grounding model trained entirely through evolution (no backpropagation).
 
-## 🎯 What This Is
+## What This Is
 
 A neural network that:
 - **Reads text as pixels** (400×100 grayscale images)
@@ -13,7 +13,7 @@ A neural network that:
 
 The model naturally converged to a fully saturated (binary) regime - something gradient descent actively avoids but evolution discovered on its own.
 
-## 📊 Key Results
+## Key Results
 
 - **Accuracy:** 72.16% (beats 10.18% frequency baseline by 608.8%)
 - **Vision-dependent:** Drops to 5.57% with shuffled pixels (92.3% drop)
@@ -21,21 +21,8 @@ The model naturally converged to a fully saturated (binary) regime - something g
 - **Architecture:** 40,000 inputs → 24 hidden → 439 outputs
 - **Parameters:** ~970k total
 
-## 📁 Repository Contents
 
-```
-├── checkpoints/
-│   └── checkpoint_gen_1272976.pkl    # Best trained model
-├── corpus/
-│   └── blanks_1k.json                # Evaluation corpus (1,528 vocab)
-├── eval.py                           # Standard evaluation
-├── eval_baselines.py                 # Compare vs random/frequency baselines
-├── eval_vision_sanity.py             # Test if model uses visual info
-├── analyze_genome.py                 # Comprehensive network analysis
-└── text_predictor.py                 # Interactive demo
-```
-
-## 🚀 Quick Start
+##  Setup
 
 ### Installation
 
@@ -56,7 +43,7 @@ python text_predictor.py
 
 Type a partial sentence and watch the model predict the next word by "seeing" the text as an image.
 
-## 📝 Evaluation Scripts
+## Evaluation Scripts
 
 ### 1. Standard Evaluation (`eval.py`)
 
@@ -217,7 +204,7 @@ The model achieves 72% accuracy with just **one hidden layer**. Modern vision-la
 
 **Hypothesis:** Gradient descent may need depth partly to work around saturation - by distributing computation across many layers with moderate activations, gradients can flow. Evolution doesn't have this constraint.
 
-## 📦 Checkpoint Details
+## Checkpoint Details
 
 **File:** `checkpoints/checkpoint_gen_1272976.pkl`
 
@@ -238,7 +225,7 @@ The model achieves 72% accuracy with just **one hidden layer**. Modern vision-la
 }
 ```
 
-## 🧪 Reproducibility
+## Reproducibility
 
 All evaluation scripts use the same checkpoint and configurations. To reproduce results:
 
@@ -256,7 +243,7 @@ python analyze_genome.py      # Generate full analysis
    - Vision drop: 92.3%
    - Saturation: 100%
 
-## 🔧 Configuration
+## Configuration
 
 Key parameters (defined in `config.py` or script headers):
 
@@ -280,15 +267,12 @@ If you use this code or findings, please cite:
 }
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 Found interesting patterns in the analysis? Have ideas for extensions? Open an issue or PR!
 
-## 📜 License
 
-[Your chosen license - MIT suggested for research code]
-
-## 🔗 Related Work
+##  Related Work
 
 - **Binarized Neural Networks (BNNs):** Gradient-trained binary networks requiring Straight-Through Estimators
 - **NEAT/HyperNEAT:** Evolutionary neural architecture search
@@ -296,7 +280,7 @@ Found interesting patterns in the analysis? Have ideas for extensions? Open an i
 
 **Key difference:** This model naturally discovered the binary regime through evolution, without coercion.
 
-## ❓ FAQ
+## FAQ
 
 **Q: Why is 100% saturation good if it breaks gradient descent?**  
 A: It's only "bad" because gradient descent can't handle it. Evolution proved that fully saturated networks can achieve strong performance - we've been avoiding them due to optimizer constraints, not task requirements.
@@ -311,8 +295,6 @@ A: Not claiming evolution is "better" - it's 1000x slower. But it can explore so
 A: Probably not naturally. You'd need tricks like Straight-Through Estimators (fake gradients) or quantization-aware training. The point is evolution gets there without any hacks.
 
 ## 📧 Contact
-
-[Your contact information]
 
 ---
 
